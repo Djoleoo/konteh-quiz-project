@@ -1,0 +1,80 @@
+.exam-overview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #FCF55F;
+  }
+  
+  .table-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px 0;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  
+  mat-header-cell, mat-cell {
+    border: 2px solid #FCF55F;
+    padding: 12px;
+    text-align: center; 
+    color: #0c0b00;
+    vertical-align: middle; 
+  }
+  
+  mat-header-cell {
+    background-color: #FCF55F;
+    font-weight: bold;
+  }
+  
+  mat-cell {
+    background-color: #282828;
+    color: #FCF55F;
+  }
+  
+  tr.mat-row:hover {
+    background-color: #4b4b4b;
+  }
+  
+  h2 {
+    color: #FCF55F;
+    font-size: 30px;
+  }
+  
+  input {
+    color: #0c0b00;
+    border-radius: 4px;
+    padding: 8px;
+  }
+  
+  .exam-overview-table {
+    border: 2px solid black;
+    width: 1200px;
+  }
+  
+  .exam-overview-table th {
+    background-color: #f6e04e;
+    color: black;
+    padding: 10px;
+    font-size: 22px;
+    text-align: center;
+    vertical-align: left; 
+  }
+  
+  .exam-overview-table td {
+    text-align: center;
+    padding: 10px;
+    vertical-align: left; 
+  }
+  

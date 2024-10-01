@@ -1,0 +1,55 @@
+<div class="questions-table">
+  <div class="search">
+    <mat-form-field class="search-form-field">
+        <mat-label>Search</mat-label>
+        <input matInput type="text" [formControl]="searchControl">
+    </mat-form-field>
+    <button type="button" class="button-statistics" (click)="getQuestionCategoryStatistics()">
+      Statistics
+    </button>
+  </div>
+  <table mat-table [dataSource]="dataSource"   class="full-width-table" matSort aria-label="Elements">
+    
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef  class="type-column">Type</th>
+      <td mat-cell *matCellDef="let row" class="type-column">{{getQuestionTypeName (row.type)}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">>
+      <th mat-header-cell *matHeaderCellDef >Category</th>
+      <td mat-cell *matCellDef="let row" >{{getQuestionCategoryName(row.category)}}</td>
+    </ng-container>
+ 
+    <ng-container matColumnDef="text">
+      <th mat-header-cell *matHeaderCellDef  class="text-column">Text</th>
+      <td mat-cell *matCellDef="let row" class="text-column">{{row.text}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let row">       
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="editQuestion(row.id)">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="deleteQuestion(row.id)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+          <button mat-menu-item (click)="questionStatistic(row.id)">
+            <mat-icon>poll</mat-icon>
+            <span>Statistics</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5,10,20]" [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" (page)="handlePageEvent($event)"></mat-paginator>
+</div>

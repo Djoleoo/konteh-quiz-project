@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqsbbHvpeuoTSPuhqUW7NBlexXKFeheRthIw&s" class="logo-pic">
+    <p class="title">Konteh BackOffice</p>
+    <div class="spacer"></div>
+
+    <button class="button-57 menu-button" role="button" (click)="questionsTable()" *ngIf="username"><span class="text">Questions</span><span>Questions</span></button>
+    <button class="button-57 menu-button" role="button" (click)="addQuestion()" *ngIf="username"><span class="text">Add Question</span><span>Add Question</span></button>
+    <button class="button-57 menu-button" role="button" (click)="examOverview()" *ngIf="username"><span class="text">Exams</span><span>Exams</span></button>
+    <div class="spacer"></div>
+
+    <p class="user" *ngIf="username">{{username}}</p> 
+    
+    <button class="button-57" *ngIf="username" (click)="logout()"><span class="text">Logout</span><span>Logout</span></button>
+    <button class="button-57" role="button" (click)="login()" *ngIf="!username"><span class="text">Login</span><span>Login</span></button>
+
+</mat-toolbar>

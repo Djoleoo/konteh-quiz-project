@@ -1,0 +1,23 @@
+﻿{
+  Text: Pitanje Test,
+  Category: CSharp,
+  Type: Checkbox,
+  IsDeleted: false,
+  Answers: [
+    {
+      Text: Answer 1,
+      IsCorrect: true,
+      IsDeleted: false
+    },
+    {
+      Text: Answer 5,
+      IsCorrect: true,
+      IsDeleted: false
+    },
+    {
+      Text: Answer 2,
+      IsCorrect: false,
+      IsDeleted: false
+    }
+  ]
+}

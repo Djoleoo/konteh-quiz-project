@@ -1,0 +1,83 @@
+<body>
+  <div class="title">
+    <div class="header-content">
+      
+      <h3>Make your question for the future tests!</h3>
+    </div>
+  </div>
+
+  <form [formGroup]="questionForm" (ngSubmit)="onCreateQuestion()" class="main-form">
+    <div class="question-form-container">
+      <h6 *ngIf="!isEditingQuestion">CREATE QUESTION</h6>
+      <h6 *ngIf="isEditingQuestion">EDIT QUESTION</h6>
+
+      <mat-form-field>
+        <mat-label>TYPE</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of questionTypeOptions" [value]="getEnumValueForType(type)">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>CATEGORY</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of questionCategoryOptions" [value]="getEnumValueForCategory(category)">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>QUESTION</mat-label>
+        <textarea matInput formControlName="text"></textarea>
+      </mat-form-field>
+      <app-form-errors [form]="questionForm"></app-form-errors>
+      <button mat-raised-button type="submit" *ngIf="!isEditingQuestion">CREATE</button>
+      <button mat-raised-button type="submit" *ngIf="isEditingQuestion">EDIT</button>
+
+    </div>
+
+
+    <div class="answer-form-container">
+
+      <h6 *ngIf="!isEditingAnswer">ADD ANSWER</h6>
+      <h6 *ngIf="isEditingAnswer">EDIT ANSWER</h6>
+
+      <mat-checkbox formControlName="isCorrect">IS CORRECT</mat-checkbox>
+
+      <mat-form-field>
+        <mat-label>ANSWER</mat-label>
+        <textarea matInput formControlName="answerText"></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button (click)="createAnswer()" type="button" *ngIf="!isEditingAnswer">ADD</button>
+      <button mat-raised-button (click)="onEditAnswerFormClick()" type="button" *ngIf="isEditingAnswer">EDIT</button>
+
+      <!-- answers as cards -->
+      <div formArrayName="answers">
+        <div *ngFor="let answer of answersArray.controls; let i = index" class="answer-card" [formGroupName]="i">
+          <mat-card>
+            <mat-card-content>
+              <p>{{ answer.get('text')?.value }}</p>
+              <p class="status-row">
+                Is Correct:
+                <mat-icon *ngIf="answer.get('isCorrect')?.value" class="status-icon">check_circle</mat-icon>
+                <mat-icon *ngIf="!answer.get('isCorrect')?.value" class="status-icon">cancel</mat-icon>
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button (click)="deleteAnswer(i)" type="button">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-icon-button type="button" (click)="onEditAnswerCardClick(i)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>

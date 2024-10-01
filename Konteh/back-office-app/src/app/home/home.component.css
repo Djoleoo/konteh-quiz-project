@@ -1,0 +1,51 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: black;
+    color: #f6e04e; 
+    text-align: center;
+  }
+  
+  .header {
+    background-color: #f6e04e;
+    color: black;
+    padding: 20px 0;
+  }
+  
+  .main-content {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .welcome-section {
+    background-color: black;
+    border: 2px solid #f6e04e; 
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  button {
+    background-color: #f6e04e;
+    color: black;
+    margin-top: 20px;
+  }
+  .main-content button{
+    height: 60px;
+    width: 130px;
+    font-size: large;
+  }
+  .main-content button:hover{
+    background-color: #D3A128;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .footer {
+    background-color: black;
+    color: #f6e04e; 
+    padding: 10px 0;
+  }
+  
